@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- Este es para inlcuir Thymeleaf en el html con el namespace th -->
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <title>Angle - Bootstrap Admin Template</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css">
+   <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css">
+   <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css">
+   <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/fontawesome.css">
+   <!-- SIMPLE LINE ICONS-->
+   <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+   <!-- ANIMATE.CSS-->
+   <link rel="stylesheet" href="vendor/animate.css/animate.css">
+   <!-- WHIRL (spinners)-->
+   <link rel="stylesheet" href="vendor/whirl/dist/whirl.css">
+   <!-- =============== PAGE VENDOR STYLES ===============-->
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="css/bootstrap.css" id="bscss">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="css/app.css" id="maincss">
+</head>
+
+<body>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav class="navbar topnavbar">
+            <!-- START navbar header-->
+            <div class="navbar-header">
+               <a class="navbar-brand" href="#/">
+                  <div class="brand-logo">
+                     <img class="img-fluid" src="img/logo.png" alt="App Logo">
+                  </div>
+                  <div class="brand-logo-collapsed">
+                     <img class="img-fluid" src="img/logo-single.png" alt="App Logo">
+                  </div>
+               </a>
+            </div>
+            <!-- END navbar header-->
+            <!-- START Left navbar-->
+            <ul class="navbar-nav mr-auto flex-row">
+               <li class="nav-item">
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a class="nav-link d-none d-md-block d-lg-block d-xl-block" href="#" data-trigger-resize="" data-toggle-state="aside-collapsed">
+                     <em class="fas fa-bars"></em>
+                  </a>
+                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                  <a class="nav-link sidebar-toggle d-md-none" href="#" data-toggle-state="aside-toggled" data-no-persist="true">
+                     <em class="fas fa-bars"></em>
+                  </a>
+               </li>
+               <!-- START User avatar toggle-->
+               <li class="nav-item d-none d-md-block">
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a class="nav-link" id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                     <em class="icon-user"></em>
+                  </a>
+               </li>
+               <!-- END User avatar toggle-->
+               <!-- START lock screen-->
+               <li class="nav-item d-none d-md-block">
+                  <a class="nav-link" href="lock.html" title="Lock screen">
+                     <em class="icon-lock"></em>
+                  </a>
+               </li>
+               <!-- END lock screen-->
+            </ul>
+            <!-- END Left navbar-->
+            <!-- START Right Navbar-->
+            <ul class="navbar-nav flex-row">
+               <!-- Search icon-->
+               <li class="nav-item">
+                  <a class="nav-link" href="#" data-search-open="">
+                     <em class="icon-magnifier"></em>
+                  </a>
+               </li>
+               <!-- Fullscreen (only desktops)-->
+               <li class="nav-item d-none d-md-block">
+                  <a class="nav-link" href="#" data-toggle-fullscreen="">
+                     <em class="fas fa-expand"></em>
+                  </a>
+               </li>
+               
+              
+            </ul>
+            <!-- END Right Navbar-->
+            <!-- START Search form-->
+            <form class="navbar-form" role="search" action="search.html">
+               <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Type and hit enter ...">
+                  <div class="fas fa-times navbar-form-close" data-search-dismiss=""></div>
+               </div>
+               <button class="d-none" type="submit">Submit</button>
+            </form>
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+      </header>
+      
+      
+      
+      <!-- Main section-->
+      <section class="section-container">
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <div> CATALOGO
+                  <small> Informacion de productos en la empresa </small>
+               </div>
+            </div>
+            
+            
+            <!-- START row - Comienza formulario-->
+            <div class="row">
+               <div class="col-lg-12">
+                  <!-- Action es @,  objeto es con $,  campo es con * -->
+                  <form class="form-horizontal" th:action="@{validarCatalogo}" th:object="${catalogo}"  method="post"  id="CatalogForm" novalidate>
+                     <!-- START card-->
+                     <div class="card card-default">
+                        <div class="card-header">
+                           <div class="card-title">Formulario</div>
+                        </div>
+                        <div class="bg-gray-lighter px-3 py-2 my-3">Favor de llenar los campos solicitados</div>
+                        <div class="card-body">
+                           <fieldset>
+                              <div class="form-group row">
+                                 <label class="col-md-2 col-form-label">Descripcion corta: </label>
+                                 <div class="col-md-6">
+                                    
+                                    <input class="form-control" type="text" name="required" required="required" th:field="*{dsc_cor_cat}">
+                                    
+                                 </div>
+                                 <div class="col-md-4"><code>(texto)</code></div>
+                              </div>
+                           </fieldset>
+                           <fieldset>
+                              <div class="form-group row">
+                                 <label class="col-md-2 col-form-label">Descripcion completa: </label>
+                                 <div class="col-md-6">
+                                 
+                                    <input class="form-control" type="text" name="required" required="required" th:field="*{dsc_com_cat}">
+                                    
+                                 </div>
+                                 <div class="col-md-4"><code>(texto)</code></div>
+                              </div>
+                           </fieldset>
+                           <fieldset>
+                              <div class="form-group row">
+                                 <label class="col-md-2 col-form-label">Estatus: </label>
+                                 <div class="col-md-6">
+                                 
+                                    <input class="form-control" type="text" name="number" required="required" data-parsley-type="number" th:field="*{id_est_cat}">
+                                    
+                                 </div>
+                                 <div class="col-md-4"><code>(numero)</code></div>
+                              </div>
+                           </fieldset>
+                           
+                           
+                        </div>
+                        <div class="card-footer text-center">
+                           <button class="btn btn-info" type="submit">VALIDAR</button>
+                        </div>
+                     </div>
+                     <!-- END card-->
+                  </form>
+               </div>
+            </div>
+            <!-- END row-->
+         </div>
+      </section>
+      <!-- Page footer-->
+      <footer class="footer-container">
+         <span>&copy; 2018 - Angle</span>
+      </footer>
+   </div>
+   <!-- =============== VENDOR SCRIPTS ===============-->
+   <!-- MODERNIZR-->
+   <script src="vendor/modernizr/modernizr.custom.js"></script>
+   <!-- STORAGE API-->
+   <script src="vendor/js-storage/js.storage.js"></script>
+   <!-- SCREENFULL-->
+   <script src="vendor/screenfull/dist/screenfull.js"></script>
+   <!-- i18next-->
+   <script src="vendor/i18next/i18next.js"></script>
+   <script src="vendor/i18next-xhr-backend/i18nextXHRBackend.js"></script>
+   <script src="vendor/jquery/dist/jquery.js"></script>
+   <script src="vendor/popper.js/dist/umd/popper.js"></script>
+   <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+   <!-- =============== PAGE VENDOR SCRIPTS ===============-->
+   <!-- PARSLEY-->
+   <script src="vendor/parsleyjs/dist/parsley.js"></script>
+   <!-- =============== APP SCRIPTS ===============-->
+   <script src="js/app.js"></script>
+</body>
+
+</html>
