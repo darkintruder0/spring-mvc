@@ -32,7 +32,7 @@ public class LoginController {
 		System.out.println("u: "+loginRequest.getEmail());
 		System.out.println("u: "+loginRequest.getPassword());
 		
-		return "redirect:/form-catalogo";
+		return "redirect:/catalogo";
 	}
 
 }
