@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import net.tecgurus.spring.mvc.beans.Catalogo;
 
+//Comentario de prueba
 @Controller
 public class CatalogoController {
 	
