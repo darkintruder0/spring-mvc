@@ -3,6 +3,8 @@
  */
 package net.tecgurus.spring.mvc.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,8 +61,28 @@ public class LoginController {
 			return "redirect:/catalogo";
 		}
 		
+	}				
+				@GetMapping("/usuarios")
+				
+				public String getUsuarios(Model model) {
+					
+					List<LoginEntity> usuarios = (List<LoginEntity>)loginRepository.findAll();
+					
+					for (LoginEntity user : usuarios) {
+						
+						System.out.println("u:  " + user.getEmail());
+						System.out.println("u:  " + user.getPassword());
+						System.out.println("u:  " + user.getId());
+						
+						
+					}
+					
+					model.addAttribute("lista_usuarios", usuarios);
+					return "usuarios";
+				}
+			
 		
 		
-	}
+	
 
 }
