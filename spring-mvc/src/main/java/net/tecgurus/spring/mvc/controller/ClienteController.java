@@ -19,7 +19,7 @@ import net.tecgurus.spring.mvc.beans.Cliente;
 public class ClienteController {
 	
 	@GetMapping("/cliente")
-	public String GetFormCatalogo(Model model) {
+	public String GetFormCliente(Model model) {
 		
 		model.addAttribute("clienteOBJ", new Cliente());
 		return "cliente";
